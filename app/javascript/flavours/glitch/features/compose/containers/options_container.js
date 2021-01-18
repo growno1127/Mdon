@@ -48,6 +48,18 @@ const mapDispatchToProps = (dispatch) => ({
   onDoodleOpen() {
     dispatch(openModal('DOODLE', { noEsc: true, noClose: true }));
   },
+
+  onEmbedGiphy() {
+    dispatch(openModal('GIPHY', { noEsc: true }));
+  },
+
+  onModalClose() {
+    dispatch(closeModal());
+  },
+
+  onModalOpen(props) {
+    dispatch(openModal('ACTIONS', props));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Options);
