@@ -133,7 +133,7 @@ class ComposerOptions extends ImmutablePureComponent {
     onChangeContentType: PropTypes.func,
     onTogglePoll: PropTypes.func,
     onDoodleOpen: PropTypes.func,
-    onEmbedGiphy: PropTypes.func,
+    onEmbedTenor: PropTypes.func,
     onModalClose: PropTypes.func,
     onModalOpen: PropTypes.func,
     onToggleSpoiler: PropTypes.func,
@@ -156,7 +156,7 @@ class ComposerOptions extends ImmutablePureComponent {
   //  Handles attachment clicks.
   handleClickAttach = (name) => {
     const { fileElement } = this;
-    const { onDoodleOpen, onEmbedGiphy } = this.props;
+    const { onDoodleOpen, onEmbedTenor } = this.props;
 
     //  We switch over the name of the option.
     switch (name) {
@@ -171,8 +171,8 @@ class ComposerOptions extends ImmutablePureComponent {
       }
       return;
     case 'gif':
-      if (onEmbedGiphy) {
-        onEmbedGiphy();
+      if (onEmbedTenor) {
+        onEmbedTenor();
       }
       return;
     }
