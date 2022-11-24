@@ -25,6 +25,7 @@ import StatusContent from './status_content';
 import StatusHeader from './status_header';
 import StatusIcons from './status_icons';
 import StatusPrepend from './status_prepend';
+import StatusReactionsBar from './status_reactions_bar';
 
 const domParser = new DOMParser();
 
@@ -86,6 +87,8 @@ class Status extends ImmutablePureComponent {
     onDelete: PropTypes.func,
     onDirect: PropTypes.func,
     onMention: PropTypes.func,
+    onReactionAdd: PropTypes.func,
+    onReactionRemove: PropTypes.func,
     onPin: PropTypes.func,
     onOpenMedia: PropTypes.func,
     onOpenVideo: PropTypes.func,
@@ -113,6 +116,7 @@ class Status extends ImmutablePureComponent {
     scrollKey: PropTypes.string,
     deployPictureInPicture: PropTypes.func,
     settings: ImmutablePropTypes.map.isRequired,
+    emojiMap: ImmutablePropTypes.map.isRequired,
     pictureInPicture: ImmutablePropTypes.contains({
       inUse: PropTypes.bool,
       available: PropTypes.bool,
@@ -830,6 +834,14 @@ class Status extends ImmutablePureComponent {
             disabled={!router}
             tagLinks={settings.get('tag_misleading_links')}
             rewriteMentions={settings.get('rewrite_mentions')}
+          />
+
+          <StatusReactionsBar
+            statusId={status.get('id')}
+            reactions={status.get('reactions')}
+            addReaction={this.props.onReactionAdd}
+            removeReaction={this.props.onReactionRemove}
+            emojiMap={this.props.emojiMap}
           />
 
           {!isCollapsed || !(muted || !settings.getIn(['collapsed', 'show_action_bar'])) ? (
