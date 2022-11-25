@@ -17,6 +17,7 @@ import { Icon } from 'flavours/glitch/components/icon';
 import MediaGallery from 'flavours/glitch/components/media_gallery';
 import PictureInPicturePlaceholder from 'flavours/glitch/components/picture_in_picture_placeholder';
 import StatusContent from 'flavours/glitch/components/status_content';
+import StatusReactionsBar from '../../../components/status_reactions_bar';
 import VisibilityIcon from 'flavours/glitch/components/status_visibility_icon';
 import PollContainer from 'flavours/glitch/containers/poll_container';
 import Audio from 'flavours/glitch/features/audio';
@@ -25,9 +26,6 @@ import Video from 'flavours/glitch/features/video';
 import scheduleIdleTask from '../../ui/util/schedule_idle_task';
 
 import Card from './card';
-
-
-
 
 class DetailedStatus extends ImmutablePureComponent {
 
@@ -53,6 +51,9 @@ class DetailedStatus extends ImmutablePureComponent {
       available: PropTypes.bool,
     }),
     onToggleMediaVisibility: PropTypes.func,
+    onReactionAdd: PropTypes.func.isRequired,
+    onReactionRemove: PropTypes.func.isRequired,
+    emojiMap: ImmutablePropTypes.map.isRequired,
     intl: PropTypes.object.isRequired,
   };
 
@@ -330,6 +331,14 @@ class DetailedStatus extends ImmutablePureComponent {
             tagLinks={settings.get('tag_misleading_links')}
             rewriteMentions={settings.get('rewrite_mentions')}
             disabled
+          />
+
+          <StatusReactionsBar
+            statusId={status.get('id')}
+            reactions={status.get('reactions')}
+            addReaction={this.props.onReactionAdd}
+            removeReaction={this.props.onReactionRemove}
+            emojiMap={this.props.emojiMap}
           />
 
           <div className='detailed-status__meta'>
