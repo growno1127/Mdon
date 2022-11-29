@@ -25,7 +25,7 @@ import StatusContent from './status_content';
 import StatusHeader from './status_header';
 import StatusIcons from './status_icons';
 import StatusPrepend from './status_prepend';
-import StatusReactionsBar from './status_reactions_bar';
+import StatusReactions from './status_reactions';
 
 const domParser = new DOMParser();
 
@@ -837,7 +837,7 @@ class Status extends ImmutablePureComponent {
             rewriteMentions={settings.get('rewrite_mentions')}
           />
 
-          <StatusReactionsBar
+          <StatusReactions
             statusId={status.get('id')}
             reactions={status.get('reactions')}
             addReaction={this.props.onReactionAdd}
