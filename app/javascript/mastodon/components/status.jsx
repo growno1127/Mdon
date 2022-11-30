@@ -17,8 +17,7 @@ import Card from '../features/status/components/card';
 // to use the progress bar to show download progress
 import Bundle from '../features/ui/components/bundle';
 import { MediaGallery, Video, Audio } from '../features/ui/util/async-components';
-import { displayMedia } from '../initial_state';
-import { visibleReactions } from '../../flavours/glitch/initial_state';
+import { displayMedia, visibleReactions } from '../initial_state';
 
 import AttachmentList from './attachment_list';
 import { Avatar } from './avatar';

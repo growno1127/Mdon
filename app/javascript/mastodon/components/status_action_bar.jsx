@@ -10,10 +10,9 @@ import { connect } from 'react-redux';
 
 import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'mastodon/permissions';
 import EmojiPickerDropdown from '../features/compose/containers/emoji_picker_dropdown_container';
-import { maxReactions } from '../../flavours/glitch/initial_state';
 
 import DropdownMenuContainer from '../containers/dropdown_menu_container';
-import { me } from '../initial_state';
+import { me, maxReactions } from '../initial_state';
 
 import { IconButton } from './icon_button';
 
