@@ -12,6 +12,7 @@ import { AnimatedNumber } from 'mastodon/components/animated_number';
 import EditedTimestamp from 'mastodon/components/edited_timestamp';
 import { Icon }  from 'mastodon/components/icon';
 import PictureInPicturePlaceholder from 'mastodon/components/picture_in_picture_placeholder';
+import StatusReactions from '../../../components/status_reactions';
 
 import { Avatar } from '../../../components/avatar';
 import { DisplayName } from '../../../components/display_name';
@@ -52,6 +53,9 @@ class DetailedStatus extends ImmutablePureComponent {
       available: PropTypes.bool,
     }),
     onToggleMediaVisibility: PropTypes.func,
+    onReactionAdd: PropTypes.func.isRequired,
+    onReactionRemove: PropTypes.func.isRequired,
+    emojiMap: ImmutablePropTypes.map.isRequired,
   };
 
   state = {
@@ -291,6 +295,14 @@ class DetailedStatus extends ImmutablePureComponent {
           />
 
           {media}
+
+          <StatusReactions
+            statusId={status.get('id')}
+            reactions={status.get('reactions')}
+            addReaction={this.props.onReactionAdd}
+            removeReaction={this.props.onReactionRemove}
+            emojiMap={this.props.emojiMap}
+          />
 
           <div className='detailed-status__meta'>
             <a className='detailed-status__datetime' href={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}`} target='_blank' rel='noopener noreferrer'>

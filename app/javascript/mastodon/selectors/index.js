@@ -141,3 +141,11 @@ export const getAccountHidden = createSelector([
 export const getStatusList = createSelector([
   (state, type) => state.getIn(['status_lists', type, 'items']),
 ], (items) => items.toList());
+
+export const makeCustomEmojiMap = createSelector(
+  [state => state.get('custom_emojis')],
+  items => items.reduce(
+    (map, emoji) => map.set(emoji.get('shortcode'), emoji),
+    ImmutableMap(),
+  ),
+);
