@@ -12,7 +12,7 @@ import { HotKeys } from 'react-hotkeys';
 import PictureInPicturePlaceholder from 'flavours/glitch/components/picture_in_picture_placeholder';
 import PollContainer from 'flavours/glitch/containers/poll_container';
 import NotificationOverlayContainer from 'flavours/glitch/features/notifications/containers/overlay_container';
-import { displayMedia } from 'flavours/glitch/initial_state';
+import { displayMedia, visibleReactions } from 'flavours/glitch/initial_state';
 import { autoUnfoldCW } from 'flavours/glitch/utils/content_warning';
 
 import Card from '../features/status/components/card';
@@ -840,7 +840,7 @@ class Status extends ImmutablePureComponent {
           <StatusReactions
             statusId={status.get('id')}
             reactions={status.get('reactions')}
-            numVisible={settings.get('num_visible_reactions')}
+            numVisible={visibleReactions}
             addReaction={this.props.onReactionAdd}
             removeReaction={this.props.onReactionRemove}
             emojiMap={this.props.emojiMap}
