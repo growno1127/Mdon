@@ -55,7 +55,7 @@ import StatusContainer from 'flavours/glitch/containers/status_container';
 import BundleColumnError from 'flavours/glitch/features/ui/components/bundle_column_error';
 import Column from 'flavours/glitch/features/ui/components/column';
 import { boostModal, favouriteModal, deleteModal } from 'flavours/glitch/initial_state';
-import { makeGetStatus, makeGetPictureInPicture } from 'flavours/glitch/selectors';
+import { makeCustomEmojiMap, makeGetStatus, makeGetPictureInPicture } from 'flavours/glitch/selectors';
 import { autoUnfoldCW } from 'flavours/glitch/utils/content_warning';
 
 import ColumnHeader from '../../components/column_header';
@@ -63,8 +63,6 @@ import { attachFullscreenListener, detachFullscreenListener, isFullscreen } from
 
 import ActionBar from './components/action_bar';
 import DetailedStatus from './components/detailed_status';
-
-import { makeCustomEmojiMap } from '../../selectors';
 
 const messages = defineMessages({
   deleteConfirm: { id: 'confirmations.delete.confirm', defaultMessage: 'Delete' },
