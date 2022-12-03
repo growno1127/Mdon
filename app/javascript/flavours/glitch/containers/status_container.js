@@ -47,7 +47,6 @@ import { showAlertForError } from '../actions/alerts';
 import AccountContainer from 'flavours/glitch/containers/account_container';
 import Spoilers from '../components/spoilers';
 import Icon from 'flavours/glitch/components/icon';
-import { makeCustomEmojiMap } from '../selectors';
 
 const messages = defineMessages({
   deleteConfirm: { id: 'confirmations.delete.confirm', defaultMessage: 'Delete' },
@@ -91,7 +90,6 @@ const makeMapStateToProps = () => {
       account: account || props.account,
       settings: state.get('local_settings'),
       prepend: prepend || props.prepend,
-      emojiMap: makeCustomEmojiMap(state),
       pictureInPicture: getPictureInPicture(state, props),
     };
   };
