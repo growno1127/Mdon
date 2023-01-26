@@ -740,12 +740,7 @@ class Status extends ImmutablePureComponent {
                   domain={domain}
                   showMedia={this.state.showMedia}
                   onToggleMediaVisibility={this.handleToggleMediaVisibility}
-<<<<<<< HEAD
                   pictureInPicture={pictureInPicture}
-                  emojiMap={this.props.emojiMap}
-=======
-                  usingPiP={usingPiP}
->>>>>>> f0197c80d (display external custom emoji reactions properly)
                 />
 
                 <ActionBar
