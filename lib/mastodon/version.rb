@@ -21,7 +21,7 @@ module Mastodon
     end
 
     def suffix
-      '+glitch'
+      '+chuckya'
     end
 
     def to_a
