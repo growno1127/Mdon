@@ -905,7 +905,6 @@ ActiveRecord::Schema.define(version: 2022_12_06_114142) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id", "status_id", "name"], name: "index_status_reactions_on_account_id_and_status_id", unique: true
-    t.index ["account_id"], name: "index_status_reactions_on_account_id"
     t.index ["custom_emoji_id"], name: "index_status_reactions_on_custom_emoji_id"
     t.index ["status_id"], name: "index_status_reactions_on_status_id"
   end
