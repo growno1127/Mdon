@@ -268,19 +268,6 @@ class Status extends ImmutablePureComponent {
     this.props.dispatch(removeReaction(statusId, name));
   }
 
-  handleReactionAdd = (statusId, name, url) => {
-    const { dispatch } = this.props;
-    const { signedIn } = this.context.identity;
-
-    if (signedIn) {
-      dispatch(addReaction(statusId, name, url));
-    }
-  }
-
-  handleReactionRemove = (statusId, name) => {
-    this.props.dispatch(removeReaction(statusId, name));
-  }
-
   handlePin = (status) => {
     if (status.get('pinned')) {
       this.props.dispatch(unpin(status));
