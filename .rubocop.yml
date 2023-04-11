@@ -73,6 +73,7 @@ Metrics/BlockLength:
     - 'app/models/concerns/omniauthable.rb'
     - 'app/models/concerns/pam_authenticable.rb'
     - 'app/models/concerns/remotable.rb'
+    - 'app/services/search_service.rb'
     - 'app/services/suspend_account_service.rb'
     - 'app/services/unsuspend_account_service.rb'
     - 'app/views/accounts/show.rss.ruby'
@@ -113,6 +114,7 @@ Metrics/ClassLength:
     - 'app/lib/feed_manager.rb'
     - 'app/lib/link_details_extractor.rb'
     - 'app/lib/request.rb'
+    - 'app/lib/search_query_transformer.rb'
     - 'app/lib/text_formatter.rb'
     - 'app/lib/user_settings_decorator.rb'
     - 'app/mailers/user_mailer.rb'
@@ -136,6 +138,7 @@ Metrics/ClassLength:
     - 'app/services/import_service.rb'
     - 'app/services/notify_service.rb'
     - 'app/services/post_status_service.rb'
+    - 'app/services/search_service.rb'
     - 'app/services/update_status_service.rb'
     - 'lib/paperclip/color_extractor.rb'
 

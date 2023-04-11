@@ -241,7 +241,7 @@ class SearchQueryTransformer < Parslet::Transform
       when 'has'
         initialize_has(term)
 
-      when 'lang'
+      when 'lang', 'visibility'
         @search_types = %i(statuses)
 
       when 'before', 'after'
