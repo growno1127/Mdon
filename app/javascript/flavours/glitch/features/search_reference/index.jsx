@@ -1,11 +1,11 @@
 import React from 'react';
-import Column from 'mastodon/components/column';
+import Column from 'flavours/glitch/components/column';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import ColumnHeader from 'mastodon/components/column_header';
+import ColumnHeader from 'flavours/glitch/components/column_header';
 import { Helmet } from 'react-helmet';
-import { searchEnabled } from '../../initial_state';
+import { searchEnabled } from 'flavours/glitch/initial_state';
 
 const messages = defineMessages({
   heading: { id: 'search_reference.heading', defaultMessage: 'Search Reference' },
@@ -30,7 +30,6 @@ class SearchReference extends ImmutablePureComponent {
         />
 
         <div className='search-reference scrollable optionally-scrollable'>
-
           <p>
             { searchEnabled
               ? <FormattedMessage id='search_popout.tips.full_text' defaultMessage='Simple text returns statuses you have written, favourited, boosted, or have been mentioned in, as well as matching usernames, display names, and hashtags.' />
@@ -131,7 +130,7 @@ class SearchReference extends ImmutablePureComponent {
             { searchEnabled &&
               <tbody>
                 <tr>
-                  <th colspan='2'><FormattedMessage id='search_reference.search_operators.sections.posts' defaultMessage='Post operators' /></th>
+                  <th colSpan='2'><FormattedMessage id='search_reference.search_operators.sections.posts' defaultMessage='Post operators' /></th>
                 </tr>
                 <tr>
                   <td><kbd>from:@username@domain</kbd></td>

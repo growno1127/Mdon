@@ -58,6 +58,10 @@ export function KeyboardShortcuts () {
   return import(/* webpackChunkName: "flavours/glitch/async/keyboard_shortcuts" */'flavours/glitch/features/keyboard_shortcuts');
 }
 
+export function SearchReference () {
+  return import(/* webpackChunkName: "flavours/glitch/async/search_reference" */'flavours/glitch/features/search_reference');
+}
+
 export function PinnedStatuses () {
   return import(/* webpackChunkName: "flavours/glitch/async/pinned_statuses" */'flavours/glitch/features/pinned_statuses');
 }
