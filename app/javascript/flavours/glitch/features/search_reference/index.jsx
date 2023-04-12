@@ -170,7 +170,7 @@ class SearchReference extends ImmutablePureComponent {
                 </tr>
                 <tr>
                   <td><kbd>visibility:public</kbd></td>
-                  <td><FormattedMessage id='search_reference.search_operators.has.warning' defaultMessage='public posts only' /></td>
+                  <td><FormattedMessage id='search_reference.search_operators.is.public' defaultMessage='public posts only' /></td>
                 </tr>
                 <tr>
                   <td><kbd>before:2022-12-17</kbd></td>
