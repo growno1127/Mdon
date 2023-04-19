@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     /getting-started
     /getting-started-misc
     /keyboard-shortcuts
-    /search-reference
     /home
     /public
     /public/local

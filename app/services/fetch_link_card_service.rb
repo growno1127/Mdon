@@ -34,15 +34,6 @@ class FetchLinkCardService < BaseService
     nil
   end
 
-  # Detect whether the status has at least one link.
-  def link?(status)
-    @status       = status
-    @original_url = parse_urls
-    !@original_url.nil?
-  rescue Addressable::URI::InvalidURIError
-    false
-  end
-
   private
 
   def process_url
