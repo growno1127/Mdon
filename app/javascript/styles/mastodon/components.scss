@@ -1155,6 +1155,7 @@ body > [data-popper-placement] {
 
     .status__content,
     .status__action-bar,
+    .reactions-bar,
     .media-gallery,
     .video-player,
     .audio-player,
@@ -1201,6 +1202,10 @@ body > [data-popper-placement] {
         display: none;
       }
     }
+  }
+
+  .reactions-bar--empty {
+    margin-top: 0;
   }
 }
 
