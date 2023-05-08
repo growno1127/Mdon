@@ -42,7 +42,7 @@ import { initMuteModal } from 'flavours/glitch/actions/mutes';
 import { initBlockModal } from 'flavours/glitch/actions/blocks';
 import { initReport } from 'flavours/glitch/actions/reports';
 import { initBoostModal } from 'flavours/glitch/actions/boosts';
-import { makeCustomEmojiMap, makeGetStatus, makeGetPictureInPicture } from 'flavours/glitch/selectors';
+import { makeGetStatus, makeGetPictureInPicture } from 'flavours/glitch/selectors';
 import ScrollContainer from 'flavours/glitch/containers/scroll_container';
 import ColumnHeader from '../../components/column_header';
 import StatusContainer from 'flavours/glitch/containers/status_container';
@@ -304,11 +304,11 @@ class Status extends ImmutablePureComponent {
     if (signedIn) {
       dispatch(addReaction(statusId, name, url));
     }
-  }
+  };
 
   handleReactionRemove = (statusId, name) => {
     this.props.dispatch(removeReaction(statusId, name));
-  }
+  };
 
   handlePin = (status) => {
     if (status.get('pinned')) {
