@@ -63,14 +63,12 @@ import ColumnHeader from '../../components/column_header';
 import { textForScreenReader, defaultMediaVisibility } from '../../components/status';
 import StatusContainer from '../../containers/status_container';
 import { boostModal, deleteModal } from '../../initial_state';
-import { makeCustomEmojiMap, makeGetStatus, makeGetPictureInPicture } from '../../selectors';
+import { makeGetStatus, makeGetPictureInPicture } from '../../selectors';
 import Column from '../ui/components/column';
 import { attachFullscreenListener, detachFullscreenListener, isFullscreen } from '../ui/util/fullscreen';
 
 import ActionBar from './components/action_bar';
 import DetailedStatus from './components/detailed_status';
-
-import { makeCustomEmojiMap } from '../../selectors';
 
 const messages = defineMessages({
   deleteConfirm: { id: 'confirmations.delete.confirm', defaultMessage: 'Delete' },
@@ -163,7 +161,6 @@ const makeMapStateToProps = () => {
       askReplyConfirmation: state.getIn(['compose', 'text']).trim().length !== 0,
       domain: state.getIn(['meta', 'domain']),
       pictureInPicture: getPictureInPicture(state, { id: props.params.statusId }),
-      emojiMap: makeCustomEmojiMap(state),
     };
   };
 
@@ -275,11 +272,11 @@ class Status extends ImmutablePureComponent {
     if (signedIn) {
       dispatch(addReaction(statusId, name, url));
     }
-  }
+  };
 
   handleReactionRemove = (statusId, name) => {
     this.props.dispatch(removeReaction(statusId, name));
-  }
+  };
 
   handlePin = (status) => {
     if (status.get('pinned')) {
