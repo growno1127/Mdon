@@ -44,9 +44,6 @@ import { boostModal, favouriteModal, deleteModal } from 'flavours/glitch/initial
 import { makeGetStatus, makeGetPictureInPicture } from 'flavours/glitch/selectors';
 
 import { showAlertForError } from '../actions/alerts';
-import AccountContainer from 'flavours/glitch/containers/account_container';
-import Spoilers from '../components/spoilers';
-import Icon from 'flavours/glitch/components/icon';
 
 const messages = defineMessages({
   deleteConfirm: { id: 'confirmations.delete.confirm', defaultMessage: 'Delete' },
