@@ -97,6 +97,7 @@
  * @property {object} local_settings
  * @property {number} max_toot_chars
  * @property {number} poll_limits
+ * @property {number} max_reactions
  */
 
 const element = document.getElementById('initial-state');
