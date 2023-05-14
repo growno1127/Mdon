@@ -29,7 +29,7 @@ class ActivityPub::Activity::Like < ActivityPub::Activity
       custom_emoji = CustomEmoji.find_by(shortcode: name, domain: @account.domain)
       return false if custom_emoji.nil? # invalid custom emoji, treat it as a regular like
     end
-    return true if @account.reacted?(original_status, name)
+    return true if @account.reacted?(original_status, name, custom_emoji)
 
     reaction = original_status.status_reactions.create!(account: @account, name: name, custom_emoji: custom_emoji)
     LocalNotificationWorker.perform_async(original_status.account_id, reaction.id, 'StatusReaction', 'reaction')
