@@ -22,5 +22,7 @@ class ActivityPub::Activity::EmojiReact < ActivityPub::Activity
     reaction = original_status.status_reactions.create!(account: @account, name: name, custom_emoji: custom_emoji)
 
     LocalNotificationWorker.perform_async(original_status.account_id, reaction.id, 'StatusReaction', 'reaction')
+  rescue ActiveRecord::RecordInvalid
+    nil
   end
 end
