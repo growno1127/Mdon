@@ -1,16 +1,19 @@
-import React from 'react';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
-import { IconButton } from './icon_button';
-import DropdownMenuContainer from 'flavours/glitch/containers/dropdown_menu_container';
+
 import { defineMessages, injectIntl } from 'react-intl';
-import ImmutablePureComponent from 'react-immutable-pure-component';
-import { me, maxReactions } from 'flavours/glitch/initial_state';
-import { RelativeTimestamp } from './relative_timestamp';
-import { accountAdminLink, statusAdminLink } from 'flavours/glitch/utils/backend_links';
 import classNames from 'classnames';
+
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import ImmutablePureComponent from 'react-immutable-pure-component';
+
+import EmojiPickerDropdown from 'flavours/glitch/features/compose/containers/emoji_picker_dropdown_container';
+import DropdownMenuContainer from 'flavours/glitch/containers/dropdown_menu_container';
+import { me, maxReactions } from 'flavours/glitch/initial_state';
 import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'flavours/glitch/permissions';
-import EmojiPickerDropdown from '../features/compose/containers/emoji_picker_dropdown_container';
+import { accountAdminLink, statusAdminLink } from 'flavours/glitch/utils/backend_links';
+
+import { IconButton } from './icon_button';
+import { RelativeTimestamp } from './relative_timestamp';
 
 const messages = defineMessages({
   delete: { id: 'status.delete', defaultMessage: 'Delete' },
@@ -102,7 +105,6 @@ class StatusActionBar extends ImmutablePureComponent {
 
   handleShareClick = () => {
     navigator.share({
-      text: this.props.status.get('search_index'),
       url: this.props.status.get('url'),
     });
   };
@@ -226,6 +228,10 @@ class StatusActionBar extends ImmutablePureComponent {
 
     menu.push({ text: intl.formatMessage(messages.copy), action: this.handleCopy });
 
+    if (publicStatus && 'share' in navigator) {
+      menu.push({ text: intl.formatMessage(messages.share), action: this.handleShareClick });
+    }
+
     if (publicStatus) {
       menu.push({ text: intl.formatMessage(messages.embed), action: this.handleEmbed });
     }
@@ -285,10 +291,6 @@ class StatusActionBar extends ImmutablePureComponent {
       replyTitle = intl.formatMessage(messages.replyAll);
     }
 
-    const shareButton = ('share' in navigator) && publicStatus && (
-      <IconButton className='status__action-bar-button' title={intl.formatMessage(messages.share)} icon='share-alt' onClick={this.handleShareClick} />
-    );
-
     const reblogPrivate = status.getIn(['account', 'id']) === me && status.get('visibility') === 'private';
 
     let reblogTitle = '';
@@ -334,7 +336,6 @@ class StatusActionBar extends ImmutablePureComponent {
             ? <EmojiPickerDropdown className='status__action-bar-button' onPickEmoji={this.handleEmojiPick} button={reactButton} disabled={!canReact} />
             : reactButton
         }
-        {shareButton}
         <IconButton className='status__action-bar-button bookmark-icon' disabled={anonymousAccess} active={status.get('bookmarked')} title={intl.formatMessage(messages.bookmark)} icon='bookmark' onClick={this.handleBookmarkClick} />
 
         {filterButton}
