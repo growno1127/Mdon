@@ -6,7 +6,7 @@ import {
   addPoll,
   removePoll,
 } from 'flavours/glitch/actions/compose';
-import { openModal } from 'flavours/glitch/actions/modal';
+import { openModal, closeModal } from 'flavours/glitch/actions/modal';
 
 import Options from '../components/options';
 
@@ -53,15 +53,21 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   onEmbedTenor() {
-    dispatch(openModal('TENOR', { noEsc: true }));
+    dispatch(openModal({
+      modalType: 'TENOR',
+      modalProps: { noEsc: true },
+    }));
   },
 
   onModalClose() {
-    dispatch(closeModal());
+    dispatch(closeModal({
+      modalType: undefined,
+      ignoreFocus: false,
+    }));
   },
 
   onModalOpen(props) {
-    dispatch(openModal('ACTIONS', props));
+    dispatch(openModal({ modalType: 'ACTIONS', modalProps: props }));
   },
 });
 
