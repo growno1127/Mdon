@@ -114,8 +114,8 @@ class MediaAttachment < ApplicationRecord
   }.freeze
 
   VIDEO_PASSTHROUGH_OPTIONS = {
-    video_codecs: %w(h264 av1).freeze,
-    audio_codecs: ['aac', 'opus', nil].freeze,
+    video_codecs: ['h264'].freeze,
+    audio_codecs: ['aac', nil].freeze,
     colorspaces: ['yuv420p'].freeze,
     options: {
       format: 'mp4',
@@ -149,28 +149,12 @@ class MediaAttachment < ApplicationRecord
 
   AUDIO_STYLES = {
     original: {
-      format: 'webm',
-      content_type: 'audio/webm',
+      format: 'mp3',
+      content_type: 'audio/mpeg',
       convert_options: {
         output: {
           'loglevel' => 'fatal',
-          'c:a' => 'libopus',
-          'b:a' => '96k',
-        }.freeze,
-      }.freeze,
-      passthrough_options: {
-        video_codecs: [nil].freeze,
-        audio_codecs: ['opus'].freeze,
-        colorspaces: [nil].freeze,
-        options: {
-          format: 'webm',
-          convert_options: {
-            output: {
-              'loglevel' => 'fatal',
-              'map_metadata' => '-1',
-              'c:a' => 'copy',
-            }.freeze,
-          }.freeze,
+          'q:a' => 2,
         }.freeze,
       }.freeze,
     }.freeze,
@@ -386,8 +370,6 @@ class MediaAttachment < ApplicationRecord
   end
 
   def image_geometry(file)
-    return {} if file.nil?
-
     width, height = FastImage.size(file.path)
 
     return {} if width.nil?
