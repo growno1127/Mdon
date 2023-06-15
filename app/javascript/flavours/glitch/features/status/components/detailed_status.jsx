@@ -162,6 +162,8 @@ class DetailedStatus extends ImmutablePureComponent {
       outerStyle.height = `${this.state.height}px`;
     }
 
+    const language = status.getIn(['translation', 'language']) || status.get('language');
+
     if (pictureInPicture.get('inUse')) {
       media.push(<PictureInPicturePlaceholder />);
       mediaIcons.push('video-camera');
@@ -170,12 +172,13 @@ class DetailedStatus extends ImmutablePureComponent {
         media.push(<AttachmentList media={status.get('media_attachments')} />);
       } else if (status.getIn(['media_attachments', 0, 'type']) === 'audio') {
         const attachment = status.getIn(['media_attachments', 0]);
+        const description = attachment.getIn(['translation', 'description']) || attachment.get('description');
 
         media.push(
           <Audio
             src={attachment.get('url')}
-            alt={attachment.get('description')}
-            lang={status.get('language')}
+            alt={description}
+            lang={language}
             duration={attachment.getIn(['meta', 'original', 'duration'], 0)}
             poster={attachment.get('preview_url') || status.getIn(['account', 'avatar_static'])}
             backgroundColor={attachment.getIn(['meta', 'colors', 'background'])}
@@ -191,14 +194,16 @@ class DetailedStatus extends ImmutablePureComponent {
         mediaIcons.push('music');
       } else if (status.getIn(['media_attachments', 0, 'type']) === 'video') {
         const attachment = status.getIn(['media_attachments', 0]);
+        const description = attachment.getIn(['translation', 'description']) || attachment.get('description');
+
         media.push(
           <Video
             preview={attachment.get('preview_url')}
             frameRate={attachment.getIn(['meta', 'original', 'frame_rate'])}
             blurhash={attachment.get('blurhash')}
             src={attachment.get('url')}
-            alt={attachment.get('description')}
-            lang={status.get('language')}
+            alt={description}
+            lang={language}
             inline
             sensitive={status.get('sensitive')}
             letterbox={settings.getIn(['media', 'letterbox'])}
@@ -217,7 +222,7 @@ class DetailedStatus extends ImmutablePureComponent {
             standalone
             sensitive={status.get('sensitive')}
             media={status.get('media_attachments')}
-            lang={status.get('language')}
+            lang={language}
             letterbox={settings.getIn(['media', 'letterbox'])}
             fullwidth={settings.getIn(['media', 'fullwidth'])}
             hidden={!expanded}
@@ -255,7 +260,7 @@ class DetailedStatus extends ImmutablePureComponent {
     } else if (this.context.router) {
       reblogLink = (
         <>
-           ·
+          {' · '}
           <Link to={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}/reblogs`} className='detailed-status__link'>
             <Icon id={reblogIcon} />
             <span className='detailed-status__reblogs'>
@@ -267,7 +272,7 @@ class DetailedStatus extends ImmutablePureComponent {
     } else {
       reblogLink = (
         <>
-           ·
+          {' · '}
           <a href={`/interact/${status.get('id')}?type=reblog`} className='detailed-status__link' onClick={this.handleModalLink}>
             <Icon id={reblogIcon} />
             <span className='detailed-status__reblogs'>
@@ -301,7 +306,7 @@ class DetailedStatus extends ImmutablePureComponent {
     if (status.get('edited_at')) {
       edited = (
         <>
-           ·
+          {' · '}
           <EditedTimestamp statusId={status.get('id')} timestamp={status.get('edited_at')} />
         </>
       );
