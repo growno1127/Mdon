@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
 import { defineMessages, injectIntl } from 'react-intl';
+
 import classNames from 'classnames';
 
 import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import { IconButton } from 'flavours/glitch/components/icon_button';
-import EmojiPickerDropdown from 'flavours/glitch/features/compose/containers/emoji_picker_dropdown_container';
 import DropdownMenuContainer from 'flavours/glitch/containers/dropdown_menu_container';
+import EmojiPickerDropdown from 'flavours/glitch/features/compose/containers/emoji_picker_dropdown_container';
 import { me, maxReactions } from 'flavours/glitch/initial_state';
 import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'flavours/glitch/permissions';
 import { accountAdminLink, statusAdminLink } from 'flavours/glitch/utils/backend_links';

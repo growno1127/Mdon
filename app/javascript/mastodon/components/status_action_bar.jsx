@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 import { defineMessages, injectIntl } from 'react-intl';
+
 import classNames from 'classnames';
 
 import ImmutablePropTypes from 'react-immutable-proptypes';
@@ -8,9 +9,9 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import { connect } from 'react-redux';
 
 import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'mastodon/permissions';
-import EmojiPickerDropdown from '../features/compose/containers/emoji_picker_dropdown_container';
 
 import DropdownMenuContainer from '../containers/dropdown_menu_container';
+import EmojiPickerDropdown from '../features/compose/containers/emoji_picker_dropdown_container';
 import { me, maxReactions } from '../initial_state';
 
 import { IconButton } from './icon_button';

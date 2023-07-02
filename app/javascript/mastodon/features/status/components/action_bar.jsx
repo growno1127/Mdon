@@ -2,17 +2,19 @@ import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
 import { defineMessages, injectIntl } from 'react-intl';
+
 import classNames from 'classnames';
 
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 
 import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'mastodon/permissions';
-import EmojiPickerDropdown from '../../compose/containers/emoji_picker_dropdown_container';
+
 
 import { IconButton } from '../../../components/icon_button';
 import DropdownMenuContainer from '../../../containers/dropdown_menu_container';
 import { me, maxReactions } from '../../../initial_state';
+import EmojiPickerDropdown from '../../compose/containers/emoji_picker_dropdown_container';
 
 const messages = defineMessages({
   delete: { id: 'status.delete', defaultMessage: 'Delete' },
