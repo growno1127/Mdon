@@ -14,8 +14,8 @@ module RoutingHelper
   end
 
   def redirect_asset_url(source)
-    Request.new(:head, source).perform do |res|
-      res.code == 301 ? res.headers['Location'] : source
+    Request.new(:head, source, follow: false).perform do |res|
+      res.code == 301 ? res.headers['location'] : source
     end
   end
 
