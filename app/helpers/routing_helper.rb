@@ -13,6 +13,12 @@ module RoutingHelper
     end
   end
 
+  def redirect_asset_url(source)
+    Request.new(:head, source).perform do |res|
+      res.code == 301 ? res.headers['Location'] : source
+    end
+  end
+
   def full_asset_url(source, **options)
     source = ActionController::Base.helpers.asset_url(source, **options) unless use_storage?
 
