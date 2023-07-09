@@ -27,9 +27,6 @@ import scheduleIdleTask from '../../ui/util/schedule_idle_task';
 
 import Card from './card';
 
-
-
-
 class DetailedStatus extends ImmutablePureComponent {
 
   static contextTypes = {
