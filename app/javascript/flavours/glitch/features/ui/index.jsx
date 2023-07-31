@@ -191,6 +191,7 @@ class SwitchingColumnsArea extends PureComponent {
 
           {singleColumn ? <Redirect from='/deck' to='/home' exact /> : null}
           {singleColumn && pathName.startsWith('/deck/') ? <Redirect from={pathName} to={pathName.slice(5)} /> : null}
+          {!singleColumn && pathName === '/getting-started' ? <Redirect from='/getting-started' to='/deck/getting-started' exact /> : null}
 
           <WrappedRoute path='/getting-started' component={GettingStarted} content={children} />
           <WrappedRoute path='/keyboard-shortcuts' component={KeyboardShortcuts} content={children} />
@@ -528,11 +529,12 @@ class UI extends Component {
   };
 
   handleHotkeyBack = () => {
-    // if history is exhausted, or we would leave mastodon, just go to root.
-    if (window.history.state) {
-      this.props.history.goBack();
+    const { history } = this.props;
+
+    if (history.location?.state?.fromMastodon) {
+      history.goBack();
     } else {
-      this.props.history.push('/');
+      history.push('/');
     }
   };
 
