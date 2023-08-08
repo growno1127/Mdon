@@ -123,6 +123,7 @@ body.app-body.flavour-glitch > #mastodon .status__action-bar-spacer {
 
 body.app-body.flavour-glitch > #mastodon .status__relative-time {
   margin-right: 5px;
+  z-index: 2;
 }
 
 body.app-body.flavour-glitch > #mastodon .reactions-bar button {
