@@ -61,75 +61,78 @@ a:focus-visible,
   padding-inline: 10px;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .load-more,
-  .setting-toggle,
-  .column-header__back-button,
-  .column-back-button,
-  .trends__item,
-  .story,
-  .account__avatar,
-  .button,
-  .media-gallery__item,
-  .column-link,
-  select,
-  .status-card,
-  .audio-player,
-  .account {
+  body:not(.reduce-motion) .load-more,
+  body:not(.reduce-motion) .setting-toggle,
+  body:not(.reduce-motion) .column-header__back-button,
+  body:not(.reduce-motion) .column-back-button,
+  body:not(.reduce-motion) .trends__item,
+  body:not(.reduce-motion) .story,
+  body:not(.reduce-motion) .account__avatar,
+  body:not(.reduce-motion) .button,
+  body:not(.reduce-motion) .media-gallery__item,
+  body:not(.reduce-motion) .column-link,
+  body:not(.reduce-motion) select,
+  body:not(.reduce-motion) .status-card,
+  body:not(.reduce-motion) .audio-player,
+  body:not(.reduce-motion) .account {
     transition: transform 0.4s cubic-bezier(0, 0, 0, 3), background 0.2s !important;
   }
-  .load-more:active,
-  .setting-toggle:active,
-  .column-header__back-button:active,
-  .column-back-button:active,
-  .trends__item:active,
-  .story:active,
-  .account__avatar:active,
-  .button:active,
-  .media-gallery__item:active,
-  .column-link:active,
-  select:active,
-  .status-card:active,
-  .audio-player:active,
-  .account:active,
-  .load-more:focus-visible,
-  .setting-toggle:focus-visible,
-  .column-header__back-button:focus-visible,
-  .column-back-button:focus-visible,
-  .trends__item:focus-visible,
-  .story:focus-visible,
-  .account__avatar:focus-visible,
-  .button:focus-visible,
-  .media-gallery__item:focus-visible,
-  .column-link:focus-visible,
-  select:focus-visible,
-  .status-card:focus-visible,
-  .audio-player:focus-visible,
-  .account:focus-visible {
+  body:not(.reduce-motion) .load-more:active,
+  body:not(.reduce-motion) .setting-toggle:active,
+  body:not(.reduce-motion) .column-header__back-button:active,
+  body:not(.reduce-motion) .column-back-button:active,
+  body:not(.reduce-motion) .trends__item:active,
+  body:not(.reduce-motion) .story:active,
+  body:not(.reduce-motion) .account__avatar:active,
+  body:not(.reduce-motion) .button:active,
+  body:not(.reduce-motion) .media-gallery__item:active,
+  body:not(.reduce-motion) .column-link:active,
+  body:not(.reduce-motion) select:active,
+  body:not(.reduce-motion) .status-card:active,
+  body:not(.reduce-motion) .audio-player:active,
+  body:not(.reduce-motion) .account:active,
+  body:not(.reduce-motion) .load-more:focus-visible,
+  body:not(.reduce-motion) .setting-toggle:focus-visible,
+  body:not(.reduce-motion) .column-header__back-button:focus-visible,
+  body:not(.reduce-motion) .column-back-button:focus-visible,
+  body:not(.reduce-motion) .trends__item:focus-visible,
+  body:not(.reduce-motion) .story:focus-visible,
+  body:not(.reduce-motion) .account__avatar:focus-visible,
+  body:not(.reduce-motion) .button:focus-visible,
+  body:not(.reduce-motion) .media-gallery__item:focus-visible,
+  body:not(.reduce-motion) .column-link:focus-visible,
+  body:not(.reduce-motion) select:focus-visible,
+  body:not(.reduce-motion) .status-card:focus-visible,
+  body:not(.reduce-motion) .audio-player:focus-visible,
+  body:not(.reduce-motion) .account:focus-visible {
     transform: scale(0.99);
     transition: transform 0.4s cubic-bezier(0, 0, 0, 1) !important;
   }
-  .column-header__button,
-  .column-header__buttons > .column-header__back-button,
-  .react-toggle-track,
-  .icon-button,
-  .floating-action-button {
+  body:not(.reduce-motion) .column-header__button,
+  body:not(.reduce-motion) .column-header__buttons > .column-header__back-button,
+  body:not(.reduce-motion) .react-toggle-track,
+  body:not(.reduce-motion) .icon-button,
+  body:not(.reduce-motion) .floating-action-button {
     transition: transform 0.4s cubic-bezier(0, 0, 0, 4) !important;
   }
-  .column-header__button:active,
-  .column-header__buttons > .column-header__back-button:active,
-  .react-toggle-track:active,
-  .icon-button:active,
-  .floating-action-button:active {
+  body:not(.reduce-motion) .column-header__button:active,
+  body:not(.reduce-motion) .column-header__buttons > .column-header__back-button:active,
+  body:not(.reduce-motion) .react-toggle-track:active,
+  body:not(.reduce-motion) .icon-button:active,
+  body:not(.reduce-motion) .floating-action-button:active {
     transform: scale(0.95);
     transition: transform 0.4s cubic-bezier(0, 0, 0, 1) !important;
   }
-  .status__content__spoiler-link span {
+  body:not(.reduce-motion) .status__content__spoiler-link span {
     display: inline-block;
     transition: transform 0.4s cubic-bezier(0, 0, 0, 4) !important;
   }
-  .status__content__spoiler-link:active span {
+  body:not(.reduce-motion) .status__content__spoiler-link:active span {
     transition: transform 0.4s cubic-bezier(0, 0, 0, 1) !important;
     transform: translateY(1px);
+  }
+  .reduce-motion * {
+    animation-duration: 0s !important;
   }
 @-moz-keyframes bounceIn {
     0% {
@@ -2262,11 +2265,11 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
   border-radius: 0;
   height: 100%;
 }
-.status-card.compact .status-card__image {
+.status-card.compact:not(.interactive) .status-card__image {
   position: relative;
   aspect-ratio: unset !important;
 }
-.status-card.compact .status-card__image img {
+.status-card.compact:not(.interactive) .status-card__image img {
   position: absolute;
   inset: 0;
 }
@@ -3983,5 +3986,5 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
   font-size: 1.3em;
 }
 .modal-root__container {
-  animation: bounceIn 0.7s !important;
+  animation: bounceIn 0.7s;
 }
