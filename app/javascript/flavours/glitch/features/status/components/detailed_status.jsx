@@ -13,6 +13,7 @@ import AttachmentList from 'flavours/glitch/components/attachment_list';
 import { Avatar } from 'flavours/glitch/components/avatar';
 import { DisplayName } from 'flavours/glitch/components/display_name';
 import EditedTimestamp from 'flavours/glitch/components/edited_timestamp';
+import { HashtagBar } from 'flavours/glitch/components/hashtag_bar';
 import { Icon } from 'flavours/glitch/components/icon';
 import MediaGallery from 'flavours/glitch/components/media_gallery';
 import PictureInPicturePlaceholder from 'flavours/glitch/components/picture_in_picture_placeholder';
@@ -331,6 +332,8 @@ class DetailedStatus extends ImmutablePureComponent {
             rewriteMentions={settings.get('rewrite_mentions')}
             disabled
           />
+
+          <HashtagBar hashtags={status.get('tags')} text={status.get('content')} />
 
           <div className='detailed-status__meta'>
             <a className='detailed-status__datetime' href={status.get('url')} target='_blank' rel='noopener noreferrer'>
