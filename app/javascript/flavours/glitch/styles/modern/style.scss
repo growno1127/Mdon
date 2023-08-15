@@ -9,6 +9,7 @@
   --shadow: 0 10px 40px -10px rgba(0,0,0,0.15);
   --shadow-low: 0 8px 16px -10px rgba(0,0,0,0.4);
   --shadow-med: 0 8px 60px -30px rgba(0,0,0,0.1);
+--accent
 }
 :not(body):not(.scrollable)::-webkit-scrollbar {
   width: 6px;
@@ -413,7 +414,7 @@ a:focus-visible,
 .dropdown-menu,
 .dropdown-animation {
   border-radius: var(--radius);
-  animation: scaleIn 0.2s;
+  animation: scaleIn 0.2s cubic-bezier(0, 0, 0, 1.1);
 }
 .dropdown-menu__container__list {
   overflow: hidden auto;
@@ -708,7 +709,8 @@ a:focus-visible,
 #mastodon .explore__search-results {
   padding: 10px;
 }
-#mastodon .dismissable-banner {
+#mastodon .dismissable-banner,
+#mastodon .follow_requests-unlocked_explanation {
   border-inline: 0;
   border-top: 0;
   margin: -10px;
@@ -1149,7 +1151,7 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
 .account-card,
 .scrollable :not(.focusable) > .account,
 .timeline-hint {
-  overflow: clip;
+  overflow: hidden;
   transition: background 0.2s, box-shadow 0.4s, margin 0.2s, border 0.2s;
   animation: slideUp backwards 0.4s cubic-bezier(0, 1, 1, 1);
   position: relative;
@@ -1997,12 +1999,6 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
   position: absolute;
   inset: 0;
 }
-#mastodon .status__wrapper-direct .status__prepend {
-  display: none;
-}
-#mastodon .status__wrapper-direct .status__relative-time {
-  color: #8c8dff !important;
-}
 #mastodon .status,
 #mastodon .scrollable .account {
   padding-block: 15px;
@@ -2011,6 +2007,12 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
 #mastodon .scrollable .account::before {
   inset: -10px;
   border-radius: var(--radius);
+}
+#mastodon .status.light {
+  overflow: hidden !important;
+}
+#mastodon .status.light .boost-modal__status-header {
+  display: flow-root !important;
 }
 #mastodon .account__relationship:empty {
   display: none;
@@ -2205,16 +2207,18 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
   height: 2em;
   min-width: 2em;
   width: auto;
-  transition: transform 0.2s cubic-bezier(0, 0, 0, 1);
 }
-#mastodon .status__content .custom-emoji:hover {
-  transform: scale(1.2);
+.custom-emoji {
+  transition: transform 0.4s cubic-bezier(0, 0.7, 0, 1);
+}
+.custom-emoji:hover {
+  transform: scale(1.3);
 }
 #mastodon .status__content ~ [style*="aspect-ratio"] {
   max-height: 80vh;
 }
 #mastodon .status > .status__content .status__content__text:empty {
-  margin-top: -10px !important;
+  margin-top: -5px !important;
 }
 #mastodon .status__content__spoiler-link {
   display: block;
@@ -2243,6 +2247,91 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
 #mastodon .status__content__spoiler-link:hover::after,
 #mastodon .status__content__spoiler-link:focus::after {
   opacity: 1;
+}
+#mastodon .status-direct .status__prepend,
+#mastodon .status__wrapper-direct .status__prepend,
+#mastodon .conversation .status__prepend {
+  position: absolute;
+  font-size: 0;
+}
+#mastodon .status-direct .status__content,
+#mastodon .status__wrapper-direct .status__content,
+#mastodon .conversation .status__content {
+  position: relative !important;
+  background: var(--elevated-color);
+  padding: 8px 12px;
+  padding: 0.7em 0.9em !important;
+  border-radius: var(--radius-round);
+  border-top-left-radius: 6px;
+  box-sizing: border-box;
+  margin-top: 5px !important;
+  margin-bottom: 0;
+  overflow: hidden !important;
+  max-width: max-content;
+}
+#mastodon .status-direct .status__content .media-gallery,
+#mastodon .status__wrapper-direct .status__content .media-gallery,
+#mastodon .conversation .status__content .media-gallery {
+  width: 999px;
+  max-width: 100% !important;
+}
+.detailed-status__wrapper-direct .status__content {
+  font-size: 17px;
+}
+#mastodon .detailed-status__wrapper-direct .fa-at,
+#mastodon .detailed-status__wrapper-direct .status__visibility-icon {
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--accent, #8c8dff);
+  width: auto !important;
+}
+#mastodon .detailed-status__wrapper-direct .fa-at::before,
+#mastodon .detailed-status__wrapper-direct .status__visibility-icon::before {
+  font-family: FontAwesome !important;
+}
+#mastodon .detailed-status__wrapper-direct .fa-at::after,
+#mastodon .detailed-status__wrapper-direct .status__visibility-icon::after {
+  content: attr(title);
+  margin-left: 0.4em;
+}
+#mastodon .status-direct .fa-at,
+#mastodon .status-direct .status__visibility-icon {
+  color: var(--accent, #8c8dff);
+}
+#mastodon .status-direct .status__info .status__relative-time {
+  height: auto;
+  color: var(--accent, #8c8dff);
+}
+#mastodon .status-direct.status--in-thread .status__info {
+  align-items: center;
+  gap: 10px;
+}
+#mastodon .status-direct.status--in-thread .status__info > span {
+  width: 0;
+  flex-grow: 1;
+}
+#mastodon .status-direct.status--in-thread .status__info> span,
+#mastodon .status-direct.status--in-thread .status__display-name {
+  overflow: visible !important;
+}
+#mastodon .status-direct.status--in-thread .status__display-name {
+  overflow: hidden;
+  width: 0;
+  flex-grow: 1;
+}
+#mastodon .status-direct.status--in-thread .status__avatar {
+  height: auto;
+  margin-bottom: -100px;
+}
+#mastodon .status-direct.status--in-thread .status__avatar .account__avatar {
+  position: absolute;
+  top: 0 !important;
+  height: 46px !important;
+  width: 46px !important;
+}
+#mastodon .status-direct.status--in-thread .display-name * {
+  display: inline;
+  margin-right: 0.2em;
 }
 #mastodon .media-gallery,
 #mastodon .video-player,
@@ -2608,6 +2697,7 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
   .layout-single-column .column-back-button--slim .column-back-button .column-header__collapsible:not(.collapsed) {
     flex-direction: column-reverse;
     align-items: flex-start;
+    border: 0;
     animation: slideDowFade 0.3s backwards cubic-bezier(0, 1, 0, 1.2);
   }
   .layout-single-column .tabs-bar__wrapper .column-header__collapsible,
@@ -2748,6 +2838,7 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
     max-height: 3.3em;
     min-height: 2.7em !important;
     padding-block: 0;
+    border-radius: 100px;
     position: relative;
     box-sizing: border-box;
     opacity: 0.9;
@@ -3150,6 +3241,9 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
     height: 100% !important;
     background-size: cover !important;
   }
+  #mastodon .status::before {
+    content: unset;
+  }
   #mastodon .status__action-bar {
     margin-bottom: -5px;
   }
@@ -3170,10 +3264,6 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
   }
   #mastodon .notification__filter-bar + .scrollable {
     border-radius: var(--radius) var(--radius) 0 0 !important;
-  }
-  #mastodon .modal-root__modal .status.light {
-    overflow: hidden !important;
-    padding-inline-start: 70px !important;
   }
   #mastodon .columns-area {
     padding-bottom: 0 !important;

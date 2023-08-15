@@ -73,14 +73,17 @@ body.app-body.flavour-glitch
   display: none;
 }
 
-body.app-body.flavour-glitch > #mastodon .status > .status__content {
+body.app-body.flavour-glitch
+  > #mastodon
+  .status:not(.status-direct)
+  > .status__content {
   margin-block: -90px -100px !important;
   padding-block: 100px !important;
 }
 
 body.app-body.flavour-glitch
   > #mastodon
-  .status
+  .status:not(.status-direct)
   > .status__content
   .status__content__text {
   margin-top: 0;
@@ -88,7 +91,7 @@ body.app-body.flavour-glitch
 
 body.app-body.flavour-glitch
   > #mastodon
-  .status
+  .status:not(.status-direct)
   > .status__content
   > :last-child:not(.status__content__text) {
   margin-bottom: 5px !important;
@@ -127,7 +130,7 @@ body.app-body.flavour-glitch > #mastodon .status__action-bar-spacer {
 }
 
 body.app-body.flavour-glitch > #mastodon .status__relative-time {
-  margin-inline: 5px !important;
+  margin-inline: auto 5px !important;
   z-index: 2;
   flex-grow: 0 !important;
 }
