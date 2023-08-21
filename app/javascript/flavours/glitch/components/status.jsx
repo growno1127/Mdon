@@ -19,8 +19,8 @@ import Card from '../features/status/components/card';
 import Bundle from '../features/ui/components/bundle';
 import { MediaGallery, Video, Audio } from '../features/ui/util/async-components';
 
-import { HashtagBar } from './hashtag_bar';
 import AttachmentList from './attachment_list';
+import { getHashtagBarForStatus } from './hashtag_bar';
 import StatusActionBar from './status_action_bar';
 import StatusContent from './status_content';
 import StatusHeader from './status_header';
@@ -743,10 +743,6 @@ class Status extends ImmutablePureComponent {
       contentMediaIcons.push('tasks');
     }
 
-    media.push(
-      <HashtagBar hashtags={status.get('tags')} text={status.get('content')} />
-    );
-
     //  Here we prepare extra data-* attributes for CSS selectors.
     //  Users can use those for theming, hiding avatars etc via UserStyle
     const selectorAttribs = {
@@ -786,6 +782,9 @@ class Status extends ImmutablePureComponent {
       unread,
       muted,
     }, 'focusable');
+
+    const {statusContentProps, hashtagBar} = getHashtagBarForStatus(status);
+    media.push(hashtagBar);
 
     return (
       <HotKeys handlers={handlers}>
@@ -835,6 +834,7 @@ class Status extends ImmutablePureComponent {
             disabled={!router}
             tagLinks={settings.get('tag_misleading_links')}
             rewriteMentions={settings.get('rewrite_mentions')}
+            {...statusContentProps}
           />
 
           {!isCollapsed || !(muted || !settings.getIn(['collapsed', 'show_action_bar'])) ? (
