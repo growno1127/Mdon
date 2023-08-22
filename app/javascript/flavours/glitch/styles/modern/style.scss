@@ -466,12 +466,6 @@ a:focus-visible,
     transition: padding 0.4s;
     --top: 20px;
   }
-  .columns-area__panels__pane {
-    height: unset !important;
-  }
-  .columns-area__panels__pane .columns-area__panels__pane__inner {
-    height: calc(100% + 20px) !important;
-  }
 }
 @media (min-width: 1320px) {
   .columns-area__panels {
