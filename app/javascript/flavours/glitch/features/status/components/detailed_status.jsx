@@ -310,6 +310,7 @@ class DetailedStatus extends ImmutablePureComponent {
     }
 
     const {statusContentProps, hashtagBar} = getHashtagBarForStatus(status);
+    contentMedia.push(hashtagBar);
 
     return (
       <div style={outerStyle}>
@@ -335,8 +336,6 @@ class DetailedStatus extends ImmutablePureComponent {
             disabled
             {...statusContentProps}
           />
-
-          {hashtagBar}
 
           <div className='detailed-status__meta'>
             <a className='detailed-status__datetime' href={status.get('url')} target='_blank' rel='noopener noreferrer'>
