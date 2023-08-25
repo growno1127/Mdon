@@ -784,7 +784,7 @@ class Status extends ImmutablePureComponent {
     }, 'focusable');
 
     const {statusContentProps, hashtagBar} = getHashtagBarForStatus(status);
-    media.push(hashtagBar);
+    contentMedia.push(hashtagBar);
 
     return (
       <HotKeys handlers={handlers}>
