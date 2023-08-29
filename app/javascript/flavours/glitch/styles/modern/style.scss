@@ -2405,8 +2405,9 @@ body:not(.flavour-glitch)  #mastodon .account-timeline__header .account__header_
 #mastodon .hashtag-bar button {
   font-size: 0.85em;
   font-weight: 600;
-  opacity: 0.8;
   padding: 0.2em 0.6em;
+  opacity: 0.7;
+  color: var(--accent, #8c8dff);
   transition: opacity 0.2s;
 }
 #mastodon .hashtag-bar a {
