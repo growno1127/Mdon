@@ -221,7 +221,7 @@ export function bookmark(status) {
 
     api(getState).post(`/api/v1/statuses/${status.get('id')}/bookmark`).then(function (response) {
       dispatch(importFetchedStatus(response.data));
-      dispatch(bookmarkSuccess(status));
+      dispatch(bookmarkSuccess(status, response.data));
     }).catch(function (error) {
       dispatch(bookmarkFail(status, error));
     });
@@ -234,7 +234,7 @@ export function unbookmark(status) {
 
     api(getState).post(`/api/v1/statuses/${status.get('id')}/unbookmark`).then(response => {
       dispatch(importFetchedStatus(response.data));
-      dispatch(unbookmarkSuccess(status));
+      dispatch(unbookmarkSuccess(status, response.data));
     }).catch(error => {
       dispatch(unbookmarkFail(status, error));
     });
@@ -248,10 +248,11 @@ export function bookmarkRequest(status) {
   };
 }
 
-export function bookmarkSuccess(status) {
+export function bookmarkSuccess(status, response) {
   return {
     type: BOOKMARK_SUCCESS,
     status: status,
+    response: response,
   };
 }
 
@@ -270,10 +271,11 @@ export function unbookmarkRequest(status) {
   };
 }
 
-export function unbookmarkSuccess(status) {
+export function unbookmarkSuccess(status, response) {
   return {
     type: UNBOOKMARK_SUCCESS,
     status: status,
+    response: response,
   };
 }
 
