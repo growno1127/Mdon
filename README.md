@@ -18,7 +18,13 @@ Here are some of the changes compared to glitch-soc:
 - Minor media attachment tweaks
 - Custom favicon
 
-Original glitch-soc readme is below. Setup instructions are the same as glitch-soc's.
+Setup instructions are mostly the same as [glitch-soc's](https://glitch-soc.github.io/docs); if you're migrating from an existing install, however, you'll need to run the following command before pregenerating assets to purge the existing asset cache:
+
+```sh
+RAILS_ENV=production bundle exec rails assets:clobber
+```
+
+Original glitch-soc readme is below.
 
 # Mastodon Glitch Edition
 
