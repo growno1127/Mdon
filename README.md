@@ -14,9 +14,12 @@ Here are some of the changes compared to glitch-soc:
 - Restores status trend half-life to 2 hours
 - Allows dashes in custom emote names
 - Emojis can be put side-by-side
-- Unicode emojis use [`jdecked/twemoji`](https://github.com/jdecked/twemoji) v15 graphics (mastodon/mastodon#28404)
 - Minor media attachment tweaks
 - Custom favicon
+
+Changes previously in Chuckya that made their way into vanilla Mastodon:
+
+- Unicode emojis use [`jdecked/twemoji`](https://github.com/jdecked/twemoji) v15 graphics (mastodon/mastodon#28404)
 
 Setup instructions are mostly the same as [glitch-soc's](https://glitch-soc.github.io/docs); if you're migrating from an existing install, however, you'll need to run the following command before pregenerating assets to purge the existing asset cache:
 
