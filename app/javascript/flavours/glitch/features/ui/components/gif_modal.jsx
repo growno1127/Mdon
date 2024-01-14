@@ -6,6 +6,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import { connect } from 'react-redux';
 
+import { ReactComponent as CloseIcon } from '@material-symbols/svg-600/outlined/close.svg';
 import Tenor from 'react-tenor';
 
 import { tenorSet, uploadCompose } from 'flavours/glitch/actions/compose';
@@ -84,7 +85,7 @@ class GIFModal extends ImmutablePureComponent {
     return (
       <div className='modal-root__modal tenor-modal'>
         <div className='tenor-modal__container'>
-          <IconButton title={intl.formatMessage(messages.close)} icon='close' size='16' onClick={this.props.onClose}  style={{ float: 'right' }} />
+          <IconButton title={intl.formatMessage(messages.close)} icon='close' iconComponent={CloseIcon} size='16' onClick={this.props.onClose}  style={{ float: 'right' }} />
           <Tenor
             token='FJBKNQSVF2DD'
             // eslint-disable-next-line react/jsx-no-bind

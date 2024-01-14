@@ -10,6 +10,7 @@ import { ReactComponent as AttachFileIcon } from '@material-symbols/svg-600/outl
 import { ReactComponent as BrushIcon } from '@material-symbols/svg-600/outlined/brush.svg';
 import { ReactComponent as CodeIcon } from '@material-symbols/svg-600/outlined/code.svg';
 import { ReactComponent as DescriptionIcon } from '@material-symbols/svg-600/outlined/description.svg';
+import { ReactComponent as GifBoxIcon } from '@material-symbols/svg-600/outlined/gif_box.svg';
 import { ReactComponent as InsertChartIcon } from '@material-symbols/svg-600/outlined/insert_chart.svg';
 import { ReactComponent as MarkdownIcon } from '@material-symbols/svg-600/outlined/markdown.svg';
 import { ReactComponent as MoreHorizIcon } from '@material-symbols/svg-600/outlined/more_horiz.svg';
@@ -262,7 +263,8 @@ class ComposerOptions extends ImmutablePureComponent {
               text: formatMessage(messages.doodle),
             },
             {
-              icon: 'file-image-o',
+              icon: 'gif-box',
+              iconComponent: GifBoxIcon,
               name: 'gif',
               text: formatMessage(messages.gif),
             }
