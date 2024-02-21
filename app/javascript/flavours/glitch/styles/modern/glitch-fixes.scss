@@ -175,6 +175,10 @@ body.app-body.flavour-glitch > #mastodon .account-card .media-modal__close::befo
   z-index: -1;
   opacity: 0.5;
 }
+body.app-body.flavour-glitch > #mastodon :not(.admin-account-bio) > div > .account__header__fields.account__header__fields:not(:first-child),
+body.app-body.flavour-glitch > #mastodon .account__header__account-note.account__header__fields:not(:first-child) {
+  margin-bottom: 20px;
+}
 .layout-multiple-columns.flavour-glitch .drawer {
   flex-grow: 0.2;
 }
