@@ -119,12 +119,6 @@ body.app-body.flavour-glitch > #mastodon .notification__favourite-icon-wrapper i
   width: 1.28571429em !important;
   text-align: center;
 }
-body.app-body.flavour-glitch > #mastodon .status__prepend,
-body.app-body.flavour-glitch > #mastodon .status__info .notification__message {
-  padding-bottom: 15px !important;
-  padding-top: 0 !important;
-  margin-top: -5px !important;
-}
 body.app-body.flavour-glitch > #mastodon .status__prepend .status__prepend-icon-wrapper,
 body.app-body.flavour-glitch > #mastodon .status__info .notification__message .status__prepend-icon-wrapper {
   all: unset;
