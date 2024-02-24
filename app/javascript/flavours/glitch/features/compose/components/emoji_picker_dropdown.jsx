@@ -398,7 +398,6 @@ class EmojiPickerDropdown extends PureComponent {
           active={active}
           iconComponent={MoodIcon}
           onClick={this.onToggle}
-          inverted
         />
 
         <Overlay show={active} placement={'bottom'} flip target={this.findTarget} popperConfig={{ strategy: 'fixed' }}>
